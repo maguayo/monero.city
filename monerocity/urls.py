@@ -22,4 +22,5 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', main.home, name='home'),
+    path('add-listing', main.add_listing, name='add_listing'),
 ] + static('/media/', document_root=settings.MEDIA_ROOT)
