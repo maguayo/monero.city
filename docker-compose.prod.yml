@@ -5,7 +5,7 @@ services:
     restart: always
     env_file:
       - ./.env
-    command: gunicorn --bind 0.0.0.0:8080 dockerizeddjango.wsgi
+    command: gunicorn --bind 0.0.0.0:8080 monerocity.wsgi
     volumes:
       - .:/www
     ports:
@@ -17,7 +17,7 @@ services:
     restart: always
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d
-      - ./staticfiles:/static
-      - ./mediafiles:/media
+      - ./static:/static
+      - ./media:/media
     ports:
       - "80:80"
