@@ -22,7 +22,7 @@
        <link rel="stylesheet" href="/static/css/MarkerCluster.css">
        <link rel="stylesheet" href="/static/css/MarkerCluster.Default.css">
     </head>
-    <body>
+    <body class="{{body_class}}">
         <!--loader-->
         <div class="loader-wrap">
             <div class="pin"></div>
@@ -51,7 +51,7 @@
                     <div class="nav-holder main-menu">
                         <nav>
                             <ul>
-                                <li><a href="#" class="act-link">Home</a></li>
+                                <li><a href="#" {% if body_class == "home" %} class="act-link" {% endif %}>Home</a></li>
                                 <li><a href="#">How it Works</a></li>
                                 <li><a href="#">About</a></li>
                             </ul>
