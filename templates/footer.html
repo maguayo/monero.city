@@ -97,72 +97,125 @@
         <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==" crossorigin=""></script>
         <script src="/static/js/leaflet.markercluster.js"></script>
         <script src="http://leaflet.github.io/Leaflet.markercluster/example/realworld.50000.2.js"></script>
+        {% if body_class == "home" %}
         <script>
-            
-        var tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Points &copy 2012 LINZ'
-            }),
-            latlng = L.latLng(51.505, -0.09);
+            /* HOME */
+            var tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    maxZoom: 18,
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Points &copy 2012 LINZ'
+                }),
+                latlng = L.latLng(51.505, -0.09);
 
-        var map = L.map('map-main', { center: latlng, zoom: 13, layers: [tiles] });
+            var map = L.map('map-main', { center: latlng, zoom: 13, layers: [tiles] });
 
-        var markers = L.markerClusterGroup();
+            var markers = L.markerClusterGroup();
 
-        var markerList = [];
+            var markerList = [];
 
-        //console.log('start creating markers: ' + window.performance.now());
+            //console.log('start creating markers: ' + window.performance.now());
 
-        for (var i = 0; i < addressPoints2.length; i++) {
-            var a = addressPoints2[i];
-            var title = a[2];
-            var marker = L.marker(L.latLng(a[0], a[1]), { title: title });
-            marker.bindPopup(title);
-            markerList.push(marker);
-        }
+            for (var i = 0; i < addressPoints2.length; i++) {
+                var a = addressPoints2[i];
+                var title = a[2];
+                var marker = L.marker(L.latLng(a[0], a[1]), { title: title });
+                marker.bindPopup(title);
+                markerList.push(marker);
+            }
 
-        addresses_uk = [
-            [51.5, -0.09, "1"],
-            [45, -0.09, "1"],
-            [80, -0.09, "1"],
-            [55, -2, "1"],
-            [55.5, -2, "1"],
-            [55.5, -2.3, "1"],
-            [52, -0.59, "1"],
-        ]
+            addresses_uk = [
+                [51.5, -0.09, "1"],
+                [45, -0.09, "1"],
+                [80, -0.09, "1"],
+                [55, -2, "1"],
+                [55.5, -2, "1"],
+                [55.5, -2.3, "1"],
+                [52, -0.59, "1"],
+            ]
 
-        for (var i = 0; i < addresses_uk.length; i++) {
-            var a = addresses_uk[i];
-            var title = a[2];
-            var marker = L.marker(L.latLng(a[0], a[1]), { title: title });
-            marker.bindPopup(title);
-            markerList.push(marker);
-        }
+            for (var i = 0; i < addresses_uk.length; i++) {
+                var a = addresses_uk[i];
+                var title = a[2];
+                var marker = L.marker(L.latLng(a[0], a[1]), { title: title });
+                marker.bindPopup(title);
+                markerList.push(marker);
+            }
 
-        /*
-        var map = L.map('map').setView([51.505, -0.09], 6);
+            /*
+            var map = L.map('map').setView([51.505, -0.09], 6);
 
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            }).addTo(map);
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                }).addTo(map);
 
-            L.marker([51.5, -0.09]).addTo(map).bindPopup('A pretty CSS3 popup.<br> Easily customizable.');
-            L.marker([45, -0.09]).addTo(map).bindPopup('A pretty CSS3 popup.<br> Easily customizable.');
-            L.marker([80, -0.09]).addTo(map).bindPopup('A pretty CSS3 popup.<br> Easily customizable.');
-            L.marker([55, -2]).addTo(map).bindPopup('A pretty CSS3 popup.<br> Easily customizable.');
-            L.marker([55.5, -2]).addTo(map).bindPopup('A pretty CSS3 popup.<br> Easily customizable.');
-            L.marker([55.5, -2.3]).addTo(map).bindPopup('A pretty CSS3 popup.<br> Easily customizable.');
-            L.marker([52, -0.59]).addTo(map).bindPopup('A pretty CSS3 popup.<br> Easily customizable.');
-            */
+                L.marker([51.5, -0.09]).addTo(map).bindPopup('A pretty CSS3 popup.<br> Easily customizable.');
+                L.marker([45, -0.09]).addTo(map).bindPopup('A pretty CSS3 popup.<br> Easily customizable.');
+                L.marker([80, -0.09]).addTo(map).bindPopup('A pretty CSS3 popup.<br> Easily customizable.');
+                L.marker([55, -2]).addTo(map).bindPopup('A pretty CSS3 popup.<br> Easily customizable.');
+                L.marker([55.5, -2]).addTo(map).bindPopup('A pretty CSS3 popup.<br> Easily customizable.');
+                L.marker([55.5, -2.3]).addTo(map).bindPopup('A pretty CSS3 popup.<br> Easily customizable.');
+                L.marker([52, -0.59]).addTo(map).bindPopup('A pretty CSS3 popup.<br> Easily customizable.');
+                */
 
-        //console.log('start clustering: ' + window.performance.now());
+            //console.log('start clustering: ' + window.performance.now());
 
-        markers.addLayers(markerList);
-        map.addLayer(markers);
+            markers.addLayers(markerList);
+            map.addLayer(markers);
 
-        //console.log('end clustering: ' + window.performance.now());
-    
-
+            //console.log('end clustering: ' + window.performance.now());
         </script>
+        {% endif %}
+
+        {% if body_class == "add_listing" %}
+        <script>
+             var tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    maxZoom: 18,
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Points &copy 2012 LINZ'
+                }),
+                latlng = L.latLng(51.505, -0.09);
+
+            var map = L.map('singleMap', { center: latlng, zoom: 13, layers: [tiles] });
+
+            var markers = L.markerClusterGroup();
+            var markerList = [];
+
+            addresses_uk = [
+                [51.5, -0.09, "1"],
+                [45, -0.09, "1"],
+                [80, -0.09, "1"],
+                [55, -2, "1"],
+                [55.5, -2, "1"],
+                [55.5, -2.3, "1"],
+                [52, -0.59, "1"],
+            ]
+
+            for (var i = 0; i < addresses_uk.length; i++) {
+                var a = addresses_uk[i];
+                var title = a[2];
+                var marker = L.marker(L.latLng(a[0], a[1]), { title: title });
+                marker.bindPopup(title);
+                markerList.push(marker);
+            }
+
+            markers.addLayers(markerList);
+            map.addLayer(markers);
+        </script>
+
+        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&key=AIzaSyBL0QddDfmsWkxypX9yH2yZfBc4JSwrXdI"></script>
+        <script type="text/javascript">
+
+        var geocoder = new google.maps.Geocoder();
+        var address = "new york";
+
+        geocoder.geocode( { 'address': address}, function(results, status) {
+
+          if (status == google.maps.GeocoderStatus.OK) {
+            var latitude = results[0].geometry.location.lat();
+            var longitude = results[0].geometry.location.lng();
+            alert(latitude);
+          } 
+        }); 
+        </script>
+        {% endif %}
+
     </body>
 </html>
