@@ -3262,9 +3262,9 @@ article .list-single-main-item {
 }
 .custom-form .nice-select .list {
 	width:100%;
-	padding: 80px 12px 10px;
+	padding: 10px 12px 10px;
     background: #fff;
- 
+ 	z-index: 99999;
     border-radius: 4px;
 }
 .custom-form .nice-select .list li{
@@ -3280,7 +3280,7 @@ article .list-single-main-item {
 .custom-form .nice-select .list li:hover , .custom-form .nice-select .list li.selected  {
 	color:#fff;
 }
-.custom-form  textarea , .custom-form input[type="text"] , .custom-form  input[type=email] , .custom-form  input[type=password] , .custom-form  input[type=button]{
+.custom-form textarea, .custom-form input[type="text"], .custom-form input[type=email], .custom-form input[type=password], .custom-form input[type=button], .custom-form input[type=url]{
     float: left;
     border: 1px solid #eee;
     background: #f9f9f9;
@@ -3293,6 +3293,7 @@ article .list-single-main-item {
 }
 .custom-form .nice-select input {
 	padding-left:20px;
+	display: none;
 }
 .custom-form  input::-webkit-input-placeholder  , .custom-form  textarea::-webkit-input-placeholder{
 	color: #666;
