@@ -1,1 +1,101 @@
-hi
+{% include "header.html" %}
+
+<div id="wrapper">
+    <!--content -->  
+    <div class="content">
+        <!--section --> 
+        <section id="sec1">
+            <!-- container -->
+            <div class="container">
+                <!-- profile-edit-wrap -->
+                <div class="profile-edit-wrap">
+                    <div class="row">
+                        <div class="col-md-12">
+                      		<div class="profile-edit-container add-list-container">
+                                <div class="custom-form">
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <div class="add-list-media-wrap">
+                                                <form   class="fuzone">
+                                                    <div class="fu-text">
+                                                        <span><i class="fa fa-picture-o"></i> Click here or drop files to upload</span>
+                                                    </div>
+                                                    <input type="file" class="upload">
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-7">
+                                        	<label>Listing Title <i class="fa fa-briefcase"></i></label>
+                                    		<input type="text" id="name" name="name" placeholder="Name of your business" require />
+		                                    <div class="row">
+		                                    	<div class="col-sm-6">
+		                                            <label>Email<i class="fa fa-envelope-o"></i></label>
+		                                    		<input type="email" name="email" placeholder="Email" />
+		                                    	</div>
+		                                    	<div class="col-sm-6">
+		                                            <label>Phone<i class="fa fa-phone"></i></label>
+				                                    <input type="text" name="phone" placeholder="Phone" />
+		                                    	</div>
+		                                    </div>
+		                                    <div class="row">
+		                                    	<div class="col-sm-6">
+		                                    		<label>Category</label>
+		                                            <select data-placeholder="All Categories" class="chosen-select" name="category">
+		                                                <option>All Categories</option>
+		                                                <option>Shops</option>
+		                                                <option>Hotels</option>
+		                                                <option>Restaurants</option>
+		                                                <option>Fitness</option>
+		                                                <option>Events</option>
+		                                            </select>
+		                                    	</div>
+		                                    	<div class="col-sm-6">
+				                                    <label>Website<i class="fa fa-globe"></i></label>
+				                                    <input type="url" placeholder="Your Website" name="website" />
+		                                    	</div>
+		                                    </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="profile-edit-container add-list-container" style="border-bottom: 0px;">
+                                <div class="custom-form">
+                                    <label>Address<i class="fa fa-map-marker"></i></label>
+                                    <input type="text" placeholder="Address" id="full-address" />
+                                    <div class="map-error alert alert-danger" style="display: none;"></div>
+                                    <div class="row hide">
+                                    	<div class="col-md-6">
+                                            <label>Latitude:<i class="fa fa-map-marker"></i></label>
+                                            <input type="text" id="lat" placeholder="" value=""/>                                                    
+                                        </div>
+                                    	<div class="col-md-6">
+                                            <label>Longitude:<i class="fa fa-map-marker"></i></label>
+                                            <input type="text" id="long" placeholder="" value=""/>                                                    
+                                        </div>
+                                    </div>
+                                    <div class="map-container">
+                                        <div id="singleMap" data-latitude="40.7427837" data-longitude="-73.11445617675781"></div>
+                                    </div>
+                                    <div class="text-center button-search-address validate-address-cover">
+                                    	<div class="validate-address-cover-center">
+											<button class="btn validate-address">
+												<span>Validate</span> address<i class="fa fa-refresh"></i>
+											</button>
+                                    	</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button class="btn  big-btn  color-bg flat-btn">Save Changes<i class="fa fa-angle-right"></i></button>                                                                             
+                        </div>
+                    </div>
+                </div>
+                <!--profile-edit-wrap end -->
+            </div>
+            <!--container end -->
+        </section>
+        <!-- section end -->
+    </div>
+</div>
+
+{% include "footer.html" %}
