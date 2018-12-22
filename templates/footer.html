@@ -145,6 +145,60 @@
         </script>
         {% endif %}
 
+        {% if body_class == "listings" %}
+        <script>
+            /* HOME */
+            var tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    maxZoom: 18,
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Points &copy 2012 LINZ'
+                }),
+                latlng = L.latLng(51.505, -0.09);
+
+            var map = L.map('map-main', { center: latlng, zoom: 13, layers: [tiles] });
+            var markers = L.markerClusterGroup();
+            var markerList = [];
+
+            addresses = [
+                {% for listing in listings %}
+                    [{{listing.map_lat}}, {{listing.map_long}}, "1"],
+                {% endfor %}
+            ]
+
+
+
+            for (var i = 0; i < addresses.length; i++) {
+                var a = addresses[i];
+                var title = a[2];
+                var marker = L.marker(L.latLng(a[0], a[1]), { title: title });
+                marker.bindPopup(title);
+                markerList.push(marker);
+            }
+
+            /*
+            var map = L.map('map').setView([51.505, -0.09], 6);
+
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                }).addTo(map);
+
+                L.marker([51.5, -0.09]).addTo(map).bindPopup('A pretty CSS3 popup.<br> Easily customizable.');
+                L.marker([45, -0.09]).addTo(map).bindPopup('A pretty CSS3 popup.<br> Easily customizable.');
+                L.marker([80, -0.09]).addTo(map).bindPopup('A pretty CSS3 popup.<br> Easily customizable.');
+                L.marker([55, -2]).addTo(map).bindPopup('A pretty CSS3 popup.<br> Easily customizable.');
+                L.marker([55.5, -2]).addTo(map).bindPopup('A pretty CSS3 popup.<br> Easily customizable.');
+                L.marker([55.5, -2.3]).addTo(map).bindPopup('A pretty CSS3 popup.<br> Easily customizable.');
+                L.marker([52, -0.59]).addTo(map).bindPopup('A pretty CSS3 popup.<br> Easily customizable.');
+                */
+
+            //console.log('start clustering: ' + window.performance.now());
+
+            markers.addLayers(markerList);
+            map.addLayer(markers);
+
+            //console.log('end clustering: ' + window.performance.now());
+        </script>
+        {% endif %}
+
         {% if body_class == "add_listing" %}
 
         <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&key=AIzaSyBL0QddDfmsWkxypX9yH2yZfBc4JSwrXdI"></script>
