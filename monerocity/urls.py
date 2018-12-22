@@ -23,4 +23,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', main.home, name='home'),
     path('add-listing', main.add_listing, name='add_listing'),
+    path('listings', main.listings, name='listings'),
 ] + static('/media/', document_root=settings.MEDIA_ROOT)

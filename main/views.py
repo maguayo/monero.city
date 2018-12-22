@@ -16,6 +16,18 @@ def home(request):
     return render(request, 'home.html', dictionary)
 
 
+
+def listings(request):
+    listings = Listing.objects.all()
+    dictionary = {
+        'page_title': 'Monero.city - Use Moneroin your city',
+        'body_class': 'listings',
+        'listings': listings
+    }
+    return render(request, 'listings.html', dictionary)
+
+
+
 def add_listing(request):
     if request.method == 'POST':
         form = ListingForm(request.POST)
