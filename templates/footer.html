@@ -107,33 +107,19 @@
                 latlng = L.latLng(51.505, -0.09);
 
             var map = L.map('map-main', { center: latlng, zoom: 13, layers: [tiles] });
-
             var markers = L.markerClusterGroup();
-
             var markerList = [];
 
-            //console.log('start creating markers: ' + window.performance.now());
-
-            for (var i = 0; i < addressPoints2.length; i++) {
-                var a = addressPoints2[i];
-                var title = a[2];
-                var marker = L.marker(L.latLng(a[0], a[1]), { title: title });
-                marker.bindPopup(title);
-                markerList.push(marker);
-            }
-
-            addresses_uk = [
-                [51.5, -0.09, "1"],
-                [45, -0.09, "1"],
-                [80, -0.09, "1"],
-                [55, -2, "1"],
-                [55.5, -2, "1"],
-                [55.5, -2.3, "1"],
-                [52, -0.59, "1"],
+            addresses = [
+                {% for listing in listings %}
+                    [{{listing.map_lat}}, {{listing.map_long}}, "1"],
+                {% endfor %}
             ]
 
-            for (var i = 0; i < addresses_uk.length; i++) {
-                var a = addresses_uk[i];
+
+
+            for (var i = 0; i < addresses.length; i++) {
+                var a = addresses[i];
                 var title = a[2];
                 var marker = L.marker(L.latLng(a[0], a[1]), { title: title });
                 marker.bindPopup(title);
@@ -176,6 +162,25 @@
             $(".validate-address .fa").addClass("fa-refresh");
         }
 
+        function placeToAddress(place){
+            var address = {};
+            place.address_components.forEach(function(c) {
+                switch(c.types[0]){
+                    case 'neighborhood': case 'locality':    // North Hollywood or Los Angeles?
+                        address.City = c;
+                        break;
+                    case 'postal_code':
+                        address.Zip = c;
+                        break;
+                    case 'country':
+                        address.Country = c;
+                        break;
+                }
+            });
+
+            return address;
+        }
+
         var tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 18,
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Points &copy 2012 LINZ'
@@ -188,7 +193,8 @@
         var markerList = [];
 
         var geocoder = new google.maps.Geocoder();
-        $('.validate-address').on('click', function(){
+        $('.validate-address').on('click', function(e){
+            e.preventDefault();
             $('.map-error').html("");
             $('.map-error').hide();
             $('.validate-address').addClass("load-more-button");
@@ -219,6 +225,22 @@
 
                     markers.addLayers(markerList);
                     map.addLayer(markers);
+
+                    var address_dict = placeToAddress(results[0])
+                    console.log(address_dict)
+                    $("#id_latitude").val(latitude);
+                    $("#id_longitude").val(longitude);
+                    try{
+                        $("#id_city").val(address_dict["City"].long_name);
+                    }catch(err){}
+                    
+                    try{
+                        $("#id_zip_code").val(address_dict["Zip"].long_name);
+                    }catch(err){}
+                    
+                    try{
+                        $("#id_country").val(address_dict["Country"].long_name);
+                    }catch(err){}
 
                     resetRefreshButton();
                     $('.validate-address-cover').hide();

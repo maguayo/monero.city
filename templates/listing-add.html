@@ -11,81 +11,99 @@
                 <div class="profile-edit-wrap">
                     <div class="row">
                         <div class="col-md-12">
-                      		<div class="profile-edit-container add-list-container">
-                                <div class="custom-form">
-                                    <div class="row">
-                                        <div class="col-md-5">
-                                            <div class="add-list-media-wrap">
-                                                <form   class="fuzone">
-                                                    <div class="fu-text">
-                                                        <span><i class="fa fa-picture-o"></i> Click here or drop files to upload</span>
-                                                    </div>
-                                                    <input type="file" class="upload">
-                                                </form>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-7">
-                                        	<label>Listing Title <i class="fa fa-briefcase"></i></label>
-                                    		<input type="text" id="name" name="name" placeholder="Name of your business" require />
-		                                    <div class="row">
-		                                    	<div class="col-sm-6">
-		                                            <label>Email<i class="fa fa-envelope-o"></i></label>
-		                                    		<input type="email" name="email" placeholder="Email" />
-		                                    	</div>
-		                                    	<div class="col-sm-6">
-		                                            <label>Phone<i class="fa fa-phone"></i></label>
-				                                    <input type="text" name="phone" placeholder="Phone" />
-		                                    	</div>
-		                                    </div>
-		                                    <div class="row">
-		                                    	<div class="col-sm-6">
-		                                    		<label>Category</label>
-		                                            <select data-placeholder="Select category" class="chosen-select" name="category">
-								                        <option>Restaurants & Cafes</option>
-		                                                <option>Online</option>
-		                                                <option>Conferences and Events</option>
-								                        <option>Services</option>
-								                        <option>Shop - Store</option>
-		                                            </select>
-		                                    	</div>
-		                                    	<div class="col-sm-6">
-				                                    <label>Website<i class="fa fa-globe"></i></label>
-				                                    <input type="url" placeholder="Your Website" name="website" />
-		                                    	</div>
-		                                    </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="profile-edit-container add-list-container" style="border-bottom: 0px;">
-                                <div class="custom-form">
-                                    <label>Address<i class="fa fa-map-marker"></i></label>
-                                    <input type="text" placeholder="Address" id="full-address" />
-                                    <div class="map-error alert alert-danger" style="display: none;"></div>
-                                    <div class="row hide">
-                                    	<div class="col-md-6">
-                                            <label>Latitude:<i class="fa fa-map-marker"></i></label>
-                                            <input type="text" id="lat" placeholder="" value=""/>                                                    
-                                        </div>
-                                    	<div class="col-md-6">
-                                            <label>Longitude:<i class="fa fa-map-marker"></i></label>
-                                            <input type="text" id="long" placeholder="" value=""/>                                                    
-                                        </div>
-                                    </div>
-                                    <div class="map-container">
-                                        <div id="singleMap" data-latitude="40.7427837" data-longitude="-73.11445617675781"></div>
-                                    </div>
-                                    <div class="text-center button-search-address validate-address-cover">
-                                    	<div class="validate-address-cover-center">
-											<button class="btn validate-address">
-												<span>Validate</span> address<i class="fa fa-refresh"></i>
-											</button>
-                                    	</div>
-                                    </div>
-                                </div>
-                            </div>
+                        	<form method="POST" action="{% url 'add_listing' %}">
+                        		{% csrf_token %}
+	                      		<div class="profile-edit-container add-list-container">
+	                                <div class="custom-form">
+	                                    <div class="row">
+	                                        <div class="col-md-5">
+	                                            <div class="add-list-media-wrap">
+	                                                <div class="fuzone">
+	                                                    <div class="fu-text">
+	                                                        <span><i class="fa fa-picture-o"></i> Click here or drop files to upload</span>
+	                                                    </div>
+	                                                    <input type="file" class="upload">
+	                                                </div>
+	                                            </div>
+	                                        </div>
+	                                        <div class="col-md-7">
+	                                    		{{ form.non_field_errors }}
+												{{ form.source.errors }}
+												{{ form.source }}
+	                                    		
 
-                            <button class="btn  big-btn  color-bg flat-btn">Save Changes<i class="fa fa-angle-right"></i></button>                                                                             
+	                                        	<label>Listing Title <i class="fa fa-briefcase"></i></label>
+												{{ form.name }}
+	                                    		{{ form.name.errors }}
+			                                    <div class="row">
+			                                    	<div class="col-sm-6">
+			                                            <label>Email<i class="fa fa-envelope-o"></i></label>
+			                                    		{{ form.email }}
+	                                    				{{ form.email.errors }}
+			                                    	</div>
+			                                    	<div class="col-sm-6">
+			                                            <label>Phone<i class="fa fa-phone"></i></label>
+					                                    {{ form.phone }}
+	                                    				{{ form.phone.errors }}
+			                                    	</div>
+			                                    </div>
+			                                    <div class="row">
+			                                    	<div class="col-sm-6">
+			                                    		<label>Category</label>
+			                                            <select data-placeholder="Select category" class="chosen-select" name="category">
+									                        <option>Restaurants & Cafes</option>
+			                                                <option>Online</option>
+			                                                <option>Conferences and Events</option>
+									                        <option>Services</option>
+									                        <option>Shop - Store</option>
+			                                            </select>
+			                                    	</div>
+			                                    	<div class="col-sm-6">
+					                                    <label>Website<i class="fa fa-globe"></i></label>
+					                                    {{ form.website }}
+	                                    				{{ form.website.errors }}
+			                                    	</div>
+			                                    </div>
+	                                        </div>
+	                                    </div>
+	                                </div>
+	                            </div>
+	                            <div class="profile-edit-container add-list-container" style="border-bottom: 0px;">
+	                                <div class="custom-form">
+	                                    <label>Address<i class="fa fa-map-marker"></i></label>
+	                                    {{ form.address }}
+	                                    {{ form.address.errors }}
+	                                    <div class="map-error alert alert-danger" style="display: none;"></div>
+	                                    <div class="row hide">
+	                                    	<div class="col-md-6">
+	                                            <label>Latitude:<i class="fa fa-map-marker"></i></label>
+	                                            <input type="text" id="lat" placeholder="" value=""/>                                                    
+	                                        </div>
+	                                    	<div class="col-md-6">
+	                                            <label>Longitude:<i class="fa fa-map-marker"></i></label>
+	                                            <input type="text" id="long" placeholder="" value=""/>
+	                                        </div>
+	                                        {{ form.latitude }}
+	                                        {{ form.longitude }}
+	                                        {{ form.city }}
+	                                        {{ form.zip_code }}
+	                                        {{ form.country }}
+	                                    </div>
+	                                    <div class="map-container">
+	                                        <div id="singleMap" data-latitude="40.7427837" data-longitude="-73.11445617675781"></div>
+	                                    </div>
+	                                    <div class="text-center button-search-address validate-address-cover">
+	                                    	<div class="validate-address-cover-center">
+												<a href="#" class="btn validate-address">
+													<span>Validate</span> address<i class="fa fa-refresh"></i>
+												</a>
+	                                    	</div>
+	                                    </div>
+	                                </div>
+	                            </div>
+
+	                            <button class="btn  big-btn  color-bg flat-btn" type="submit">Save Changes<i class="fa fa-angle-right"></i></button>
+	                        </form>
                         </div>
                     </div>
                 </div>

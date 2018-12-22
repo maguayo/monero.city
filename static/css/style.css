@@ -6668,7 +6668,7 @@ body.add_listing .validate-address-cover-center{
 
 body.add_listing .validate-address{
 	margin: auto;
-	display: block;
+	display: inline-block;
 	float: none;
 	background: #f9f9f9;
 	color: #4d4d4d;
@@ -6691,4 +6691,15 @@ body.add_listing .validate-address:hover{
     background-color: #f2dede;
     border-color: #ebccd1;
     clear: both;
+}
+
+ul.errorlist{
+	clear: both;
+	display: block;
+	position: relative;
+	top: -15px;
+}
+
+ul.errorlist li{
+	color: #F44336;
 }
