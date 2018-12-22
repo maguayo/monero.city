@@ -4,3 +4,5 @@ pytz==2018.7
 gunicorn
 psycopg2
 psycopg2-binary
+slugify
+mysqlclient
