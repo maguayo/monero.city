@@ -25,4 +25,5 @@ urlpatterns = [
     path('add-listing', main.add_listing, name='add_listing'),
     path('listings', main.listings, name='listings'),
     path('contribute', main.contribute, name='contribute'),
+    path('explore', main.explore, name='explore'),
 ] + static('/media/', document_root=settings.MEDIA_ROOT)

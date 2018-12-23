@@ -25,6 +25,14 @@ def contribute(request):
     return render(request, 'contribute.html', dictionary)
 
 
+def explore(request):
+    dictionary = {
+        'page_title': 'Monero.city - Use Moneroin your city',
+        'body_class': 'explore',
+    }
+    return render(request, 'explore.html', dictionary)
+
+
 
 def listings(request):
     listings = Listing.objects.all()
