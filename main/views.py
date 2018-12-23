@@ -58,11 +58,12 @@ def listings(request):
 
 def add_listing(request):
     if request.method == 'POST':
-        form = ListingForm(request.POST)
+        form = ListingForm(request.POST, request.FILES)
         if form.is_valid():
             listing = Listing()
             listing.name = form.cleaned_data["name"]
             listing.email = form.cleaned_data["email"]
+            listing.image = form.cleaned_data["image"]
             listing.phone = form.cleaned_data["phone"]
             listing.website = form.cleaned_data["website"]
             listing.map_lat = form.cleaned_data["latitude"]

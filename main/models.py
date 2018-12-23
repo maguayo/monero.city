@@ -18,6 +18,7 @@ class BaseModel(models.Model):
 class Listing(BaseModel):
     name = models.CharField(max_length=55)
     slug = models.SlugField()
+    image = models.FileField()
     phone = models.CharField(max_length=50)
     email = models.EmailField(max_length=254)
     website = models.URLField(max_length=254)

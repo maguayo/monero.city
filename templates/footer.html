@@ -285,5 +285,31 @@
         </script>
         {% endif %}
 
+
+        <script>
+            function readURL(input) {
+
+              if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                  $(".fuzone").css({
+                    "background": "url(" + e.target.result + ") #f9f9f9",
+                    "background-size": "auto 100%",
+                    "background-repeat": "no-repeat",
+                    "background-position": "center"
+                  });
+                  $(".fu-text").css("opacity", 0);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+              }
+            }
+
+            $("#id_image").change(function() {
+              readURL(this);
+            });
+        </script>
+
     </body>
 </html>

@@ -1,6 +1,7 @@
 from django import forms
 
 class ListingForm(forms.Form):
+    image = forms.FileField(widget=forms.FileInput(attrs={"class": "upload"}), required=False)
     name = forms.CharField(
         max_length=55,
         widget=forms.TextInput(attrs={'placeholder': 'Name'}),

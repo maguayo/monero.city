@@ -11,7 +11,7 @@
                 <div class="profile-edit-wrap">
                     <div class="row">
                         <div class="col-md-12">
-                        	<form method="POST" action="{% url 'add_listing' %}">
+                        	<form method="POST" action="{% url 'add_listing' %}" enctype="multipart/form-data">
                         		{% csrf_token %}
 	                      		<div class="profile-edit-container add-list-container">
 	                                <div class="custom-form">
@@ -22,9 +22,10 @@
 	                                                    <div class="fu-text">
 	                                                        <span><i class="fa fa-picture-o"></i> Click here or drop files to upload</span>
 	                                                    </div>
-	                                                    <input type="file" class="upload">
+	                                        			{{ form.image }}
 	                                                </div>
 	                                            </div>
+	                                    		{{ form.image.errors }}
 	                                        </div>
 	                                        <div class="col-md-7">
 	                                    		{{ form.non_field_errors }}
