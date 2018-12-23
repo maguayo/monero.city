@@ -17,6 +17,15 @@ def home(request):
 
 
 
+def contribute(request):
+    dictionary = {
+        'page_title': 'Monero.city - Use Moneroin your city',
+        'body_class': 'contribute',
+    }
+    return render(request, 'contribute.html', dictionary)
+
+
+
 def listings(request):
     listings = Listing.objects.all()
     dictionary = {
