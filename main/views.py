@@ -35,9 +35,11 @@ def explore(request):
 
 
 def map(request):
+    listings = Listing.objects.all()
     dictionary = {
         'page_title': 'Monero.city - Use Moneroin your city',
         'body_class': 'map big-map',
+        'listings': listings
     }
     return render(request, 'map.html', dictionary)
 
