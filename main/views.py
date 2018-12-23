@@ -10,7 +10,7 @@ def home(request):
     listings = Listing.objects.all()
     dictionary = {
         'page_title': 'Monero.city - Use Moneroin your city',
-        'body_class': 'home',
+        'body_class': 'home big-map',
         'listings': listings
     }
     return render(request, 'home.html', dictionary)
@@ -31,6 +31,15 @@ def explore(request):
         'body_class': 'explore',
     }
     return render(request, 'explore.html', dictionary)
+
+
+
+def map(request):
+    dictionary = {
+        'page_title': 'Monero.city - Use Moneroin your city',
+        'body_class': 'map big-map',
+    }
+    return render(request, 'map.html', dictionary)
 
 
 
