@@ -34,4 +34,4 @@ Start
 python manage.py runserver 8000
 ```
 
-And go yo ```http://localhost:8000```
+And go to ```http://localhost:8000```
