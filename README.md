@@ -1,5 +1,7 @@
 # monero.city
 
+Monero.city is a online directory in which you can see the merchants that accepts Monero on a map, rate them and contribute to global adoption.
+
 ## Install
 
 Create a virtualenv
