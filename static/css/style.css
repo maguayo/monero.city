@@ -2049,6 +2049,7 @@ section.gray-section .section-separator {
 	padding:0 8px;
 	margin-bottom:12px;
 }
+body.listing-no-map .listing-item{width: 33.3%}
 .list-carousel {
 	padding:0 30px;
 }
@@ -3568,6 +3569,7 @@ article .list-single-main-item {
 	height:600px;
 }
 .map-container.column-map {
+	height: calc(100vh - 80px);
 	width:50%;
 	position:fixed;
 	-webkit-transform: translate3d(0,0,0);

@@ -24,6 +24,7 @@ urlpatterns = [
     path('', main.home, name='home'),
     path('add-listing/', main.add_listing, name='add_listing'),
     path('listings/', main.listings, name='listings'),
+    path('listings/online/', main.listings_online, name='listings_online'),
     path('listings/<slug:category>/', main.listings, name='listings'),
     path('contribute/', main.contribute, name='contribute'),
     path('explore/', main.explore, name='explore'),
