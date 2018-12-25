@@ -15,9 +15,18 @@ class BaseModel(models.Model):
         abstract = True
 
 
+class Category(BaseModel):
+    slug = models.CharField(max_length=254)
+    name = models.CharField(max_length=254)
+
+    def __str__(self):
+        return self.name
+
+
 class Listing(BaseModel):
     name = models.CharField(max_length=55)
     slug = models.SlugField()
+    categories = models.ManyToManyField(Category)
     image = models.FileField()
     phone = models.CharField(max_length=50)
     email = models.EmailField(max_length=254)
@@ -33,6 +42,9 @@ class Listing(BaseModel):
     country = models.CharField(max_length=90)
 
     approved = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.name
 
 
 @receiver(pre_save, sender=Listing)
@@ -58,4 +70,3 @@ class Tip(BaseModel):
     listing = models.ForeignKey(Listing, related_name="tip_listing", on_delete=models.PROTECT)
     user = models.ForeignKey(Listing, related_name="user_tip", on_delete=models.PROTECT)
     tip = models.DecimalField(max_digits=8, decimal_places=2, blank=True, null=True)
-
