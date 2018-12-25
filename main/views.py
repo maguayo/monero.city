@@ -45,8 +45,8 @@ def map(request):
 
 
 
-def listings(request):
-    listings = Listing.objects.all()
+def listings(request, category=None):
+    listings = Listing.objects.filter(approved=True)
     dictionary = {
         'page_title': 'Monero.city - Use Moneroin your city',
         'body_class': 'listings',
