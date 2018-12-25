@@ -28,10 +28,6 @@
                     <!-- listsearch-input-wrap  -->  
                     <div class="listsearch-input-wrap fl-wrap">
                         <div class="listsearch-input-item">
-                            <i class="mbri-key single-i"></i>
-                            <input type="text" placeholder="Keywords?" value=""/>
-                        </div>
-                        <div class="listsearch-input-item">
                             <select data-placeholder="Location" class="chosen-select" >
                                 <option>All Locations</option>
                                 <option>Bronx</option>
@@ -51,12 +47,15 @@
                                 <option>Events</option>
                             </select>
                         </div>
+                        {% comment %}
                         <div class="listsearch-input-text" id="autocomplete-container">
                             <label><i class="mbri-map-pin"></i> Enter Addres </label>
                             <input type="text" placeholder="Destination , Area , Street" id="autocomplete-input" class="qodef-archive-places-search" value=""/>
                             <a  href="#"  class="loc-act qodef-archive-current-location"><i class="fa fa-dot-circle-o"></i></a>
                         </div>
+                        {% endcomment %}
                         <!-- hidden-listing-filter -->
+                        {% comment %}
                         <div class="hidden-listing-filter fl-wrap">
                             <div class="distance-input fl-wrap">
                                 <div class="distance-title"> Radius around selected destination <span></span> km</div>
@@ -77,9 +76,12 @@
                                 <label for="check-d">Wireless Internet</label>
                             </div>
                         </div>
+                        {% endcomment %}
                         <!-- hidden-listing-filter end -->
-                        <button class="button fs-map-btn">Update</button>
+                        <button class="button fs-map-btn pull-right" id="update-listing-search">Update</button>
+                        {% comment %}
                         <div class="more-filter-option">More Filters <span></span></div>
+                        {% endcomment %}
                     </div>
                     <!-- listsearch-input-wrap end -->
                 </div>
@@ -89,7 +91,7 @@
                 <a class="custom-scroll-link back-to-filters btf-l" href="#lisfw"><i class="fa fa-angle-double-up"></i><span>Back to Filters</span></a> 
                 <div class="container">
                     <!-- listing-item -->
-                    <div class="listing-item">
+                    <div class="listing-item list-layout">
                         <article class="geodir-category-listing fl-wrap">
                             <div class="geodir-category-img">
                                 <img src="/static/images/all/1.jpg" alt="">
@@ -114,7 +116,7 @@
                     </div>
                     <!-- listing-item end-->                           
                     <!-- listing-item -->
-                    <div class="listing-item">
+                    <div class="listing-item list-layout">
                         <article class="geodir-category-listing fl-wrap">
                             <div class="geodir-category-img">
                                 <img src="/static/images/all/1.jpg" alt="">
@@ -140,7 +142,7 @@
                     <!-- listing-item end-->  
                     <div class="clearfix"></div>
                     <!-- listing-item -->
-                    <div class="listing-item">
+                    <div class="listing-item list-layout">
                         <article class="geodir-category-listing fl-wrap">
                             <div class="geodir-category-img">
                                 <img src="/static/images/all/1.jpg" alt="">
@@ -165,7 +167,7 @@
                     </div>
                     <!-- listing-item end-->                              
                     <!-- listing-item -->
-                    <div class="listing-item">
+                    <div class="listing-item list-layout">
                         <article class="geodir-category-listing fl-wrap">
                             <div class="geodir-category-img">
                                 <img src="/static/images/all/1.jpg" alt="">
@@ -191,7 +193,7 @@
                     <!-- listing-item end-->
                     <div class="clearfix"></div>
                     <!-- listing-item -->
-                    <div class="listing-item">
+                    <div class="listing-item list-layout">
                         <article class="geodir-category-listing fl-wrap">
                             <div class="geodir-category-img">
                                 <img src="/static/images/all/1.jpg" alt="">
@@ -216,7 +218,7 @@
                     </div>
                     <!-- listing-item end-->                              
                     <!-- listing-item -->
-                    <div class="listing-item">
+                    <div class="listing-item list-layout">
                         <article class="geodir-category-listing fl-wrap">
                             <div class="geodir-category-img">
                                 <img src="/static/images/all/1.jpg" alt="">
