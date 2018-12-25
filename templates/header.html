@@ -51,10 +51,10 @@
                     <div class="nav-holder main-menu">
                         <nav>
                             <ul>
-                                <li><a href="{% url 'home' %}" {% if body_class == "home" %} class="act-link" {% endif %}>Home</a></li>
-                                <li><a href="{% url 'map' %}" {% if body_class == "map" %} class="act-link" {% endif %}>Map</a></li>
-                                <li><a href="{% url 'explore' %}" {% if body_class == "explore" %} class="act-link" {% endif %}>Explore</a></li>
-                                <li><a href="#" {% if body_class == "contribute" %} class="act-link" {% endif %}>Contribute</a></li>
+                                <li><a href="{% url 'home' %}" {% if "page-home" in body_class %} class="act-link" {% endif %}>Home</a></li>
+                                <li><a href="{% url 'map' %}" {% if "page-map" in body_class %} class="act-link" {% endif %}>Map</a></li>
+                                <li><a href="{% url 'explore' %}" {% if "page-explore" in body_class %} class="act-link" {% endif %}>Explore</a></li>
+                                <li><a href="#" {% if "page-contribute" in body_class %} class="act-link" {% endif %}>Contribute</a></li>
                             </ul>
                         </nav>
                     </div>

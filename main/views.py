@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render
 from main.forms import ListingForm
-from main.models import Listing
+from main.models import Listing, Category
 from django.http import *
 import os
 
@@ -10,7 +10,7 @@ def home(request):
     listings = Listing.objects.all()
     dictionary = {
         'page_title': 'Monero.city - Use Moneroin your city',
-        'body_class': 'home big-map',
+        'body_class': 'page-home big-map',
         'listings': listings
     }
     return render(request, 'home.html', dictionary)
@@ -20,7 +20,7 @@ def home(request):
 def contribute(request):
     dictionary = {
         'page_title': 'Monero.city - Use Moneroin your city',
-        'body_class': 'contribute',
+        'body_class': 'page-contribute',
     }
     return render(request, 'contribute.html', dictionary)
 
@@ -28,7 +28,7 @@ def contribute(request):
 def explore(request):
     dictionary = {
         'page_title': 'Monero.city - Use Moneroin your city',
-        'body_class': 'explore',
+        'body_class': 'page-explore',
     }
     return render(request, 'explore.html', dictionary)
 
@@ -38,7 +38,7 @@ def map(request):
     listings = Listing.objects.all()
     dictionary = {
         'page_title': 'Monero.city - Use Moneroin your city',
-        'body_class': 'map big-map',
+        'body_class': 'page-map big-map',
         'listings': listings
     }
     return render(request, 'map.html', dictionary)
@@ -47,12 +47,38 @@ def map(request):
 
 def listings(request, category=None):
     listings = Listing.objects.filter(approved=True)
+
+    try:
+        category_obj = Category.objects.get(slug=category)
+    except Exception:
+        category_obj = None
+
     dictionary = {
         'page_title': 'Monero.city - Use Moneroin your city',
-        'body_class': 'listings',
-        'listings': listings
+        'body_class': 'page-listings',
+        'listings': listings,
+        'category_obj': category_obj
     }
     return render(request, 'listings.html', dictionary)
+
+
+
+
+def listings_online(request, category=None):
+    listings = Listing.objects.filter(approved=True)
+
+    try:
+        category_obj = Category.objects.get(slug="online")
+    except Exception:
+        category_obj = None
+
+    dictionary = {
+        'page_title': 'Monero.city - Use Moneroin your city',
+        'body_class': 'page-listings listing-no-map',
+        'listings': listings,
+        'category_obj': category_obj
+    }
+    return render(request, 'listings-no-map.html', dictionary)
 
 
 
