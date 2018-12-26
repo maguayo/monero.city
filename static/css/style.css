@@ -3566,7 +3566,7 @@ article .list-single-main-item {
 	overflow: hidden;
 }
 .fw-map {
-	height:600px;
+	height: 475px;
 }
 .map-container.column-map {
 	height: calc(100vh - 80px);
