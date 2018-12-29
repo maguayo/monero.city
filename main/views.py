@@ -46,10 +46,12 @@ def map(request):
 
 
 def listings(request, category=None):
+
     listings = Listing.objects.filter(approved=True)
 
     try:
         category_obj = Category.objects.get(slug=category)
+        listings = listings.filter(categories=category_obj)
     except Exception:
         category_obj = None
 
