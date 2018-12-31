@@ -7,7 +7,7 @@ import os
 
 
 def home(request):
-    listings = Listing.objects.all()
+    listings = Listing.objects.filter(approved=True)
     dictionary = {
         'page_title': 'Monero.city - Use Moneroin your city',
         'body_class': 'page-home big-map',
@@ -35,7 +35,7 @@ def explore(request):
 
 
 def map(request):
-    listings = Listing.objects.all()
+    listings = Listing.objects.filter(approved=True)
     dictionary = {
         'page_title': 'Monero.city - Use Moneroin your city',
         'body_class': 'page-map big-map',
